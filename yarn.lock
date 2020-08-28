@@ -5139,6 +5139,18 @@ mute-stream@0.0.8:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
+muuri-angular@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/muuri-angular/-/muuri-angular-0.0.4.tgz#cdb6d5db601f4d34d5a7c80f9b8dacce840684c7"
+  integrity sha512-eR1uWhBI9pt/n/wAmfT2pLBMx+JmEsRyklKx9LMrGwY0eUynCL4FJyE/ftqXAiw7KNvC1hwjucDshEPhygKOzg==
+  dependencies:
+    tslib "^2.0.0"
+
+muuri@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/muuri/-/muuri-0.9.3.tgz#34c2bb785cca2dfaba39f5826b271edfb22477a8"
+  integrity sha512-GZGTaHxYALCCH04mmxkZ6nVr5nq2Ur8dQfbxFtyejP4U8kjae/6ZE2A9bugRBWMUIuyGRQ9btROj0gV6jQqFpQ==
+
 nan@^2.12.1:
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.1.tgz#d7be34dfa3105b91494c3147089315eff8874b01"
