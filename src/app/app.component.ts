@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GridOptions } from 'muuri';
 
 import { SvgParameters } from './svg-linear-gradient-parameters.component';
+import { CssParameters } from './css-linear-gradient-parameters.component';
 
 @Component({
   selector: 'app-root',
@@ -28,4 +29,5 @@ export class AppComponent {
   linearGradient = undefined as Element;
 
   svgParameters: SvgParameters;
+  cssParameters: CssParameters;
 }
