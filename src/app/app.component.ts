@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { GridOptions } from 'muuri';
 
+import { SvgParameters } from './svg-linear-gradient-parameters.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,4 +24,6 @@ export class AppComponent {
 
   width = 500;
   height = 300;
+
+  svgParameters: SvgParameters;
 }

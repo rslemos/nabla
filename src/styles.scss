@@ -30,6 +30,10 @@ a {
   height: 100px;
 }
 
-input[type="text"] {
+input[type="text"], textarea {
   font-family: monospace;
+}
+
+textarea {
+  padding: 8px;
 }
