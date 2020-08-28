@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+  align-items: baseline;
+}
+
+input {
+  width: 60px;
+}
+
+.error {
+  flex-basis: 100%;
+  margin-top: 8px;
+  color: red;
+  font-style: italic;
+}

@@ -1,8 +1,18 @@
 <div>
   <div #grid class="grid" muuriGrid [config]="layoutConfig">
 
+    <app-tool-window title="Output dimensions" muuriGridItem>
+      <app-any-output-dimensions-parameters
+        [(width)]="width" [(height)]="height"
+      ></app-any-output-dimensions-parameters>
+    </app-tool-window>
+
     <app-tool-window title="debug" [open]="false" muuriGridItem>
       <div class="debug">
+        <div>
+          <h6>dimensions</h6>
+          <pre>{{({width: width, height: height}) | json}}</pre>
+        </div>
       </div>
     </app-tool-window>
 

@@ -19,4 +19,7 @@ export class AppComponent {
         rounding: true,
     },
   };
+
+  width = 500;
+  height = 300;
 }
