@@ -19,6 +19,12 @@
       ></app-any-output-dimensions-parameters>
     </app-tool-window>
 
+    <app-tool-window title="SVG &lt;linearGradient/&gt; output" muuriGridItem>
+      <app-svg-linear-gradient-output
+        [(width)]="width" [(height)]="height" [linearGradient]="linearGradient"
+      ></app-svg-linear-gradient-output>
+    </app-tool-window>
+
     <app-tool-window title="debug" [open]="false" muuriGridItem>
       <div class="debug">
         <div>

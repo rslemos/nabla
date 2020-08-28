@@ -10,6 +10,7 @@ import { ToolWindowComponent } from './tool-window.component';
 import { AnyOutputDimensionsParametersComponent } from './any-output-dimensions-parameters.component';
 import { SvgLinearGradientParametersComponent } from './svg-linear-gradient-parameters.component';
 import { SvgLinearGradientCodeComponent } from './svg-linear-gradient-code.component';
+import { SvgLinearGradientOutputComponent } from './svg-linear-gradient-output.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SvgLinearGradientCodeComponent } from './svg-linear-gradient-code.compo
     AnyOutputDimensionsParametersComponent,
     SvgLinearGradientParametersComponent,
     SvgLinearGradientCodeComponent,
+    SvgLinearGradientOutputComponent,
   ],
   imports: [
     BrowserModule,
