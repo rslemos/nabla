@@ -11,6 +11,7 @@ import { AnyOutputDimensionsParametersComponent } from './any-output-dimensions-
 import { SvgLinearGradientParametersComponent } from './svg-linear-gradient-parameters.component';
 import { SvgLinearGradientCodeComponent } from './svg-linear-gradient-code.component';
 import { SvgLinearGradientOutputComponent } from './svg-linear-gradient-output.component';
+import { SvgLinearGradientOutputManyComponent } from './svg-linear-gradient-output-many.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SvgLinearGradientOutputComponent } from './svg-linear-gradient-output.c
     SvgLinearGradientParametersComponent,
     SvgLinearGradientCodeComponent,
     SvgLinearGradientOutputComponent,
+    SvgLinearGradientOutputManyComponent,
   ],
   imports: [
     BrowserModule,
