@@ -25,5 +25,7 @@ export class AppComponent {
   width = 500;
   height = 300;
 
+  linearGradient = undefined as Element;
+
   svgParameters: SvgParameters;
 }
