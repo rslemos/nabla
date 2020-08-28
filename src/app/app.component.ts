@@ -4,6 +4,8 @@ import { GridOptions } from 'muuri';
 import { SvgParameters } from './svg-linear-gradient-parameters.component';
 import { CssParameters } from './css-linear-gradient-parameters.component';
 
+import { fromSvgToCss } from './convert-svg-to-css.function';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -31,4 +33,8 @@ export class AppComponent {
 
   svgParameters: SvgParameters;
   cssParameters: CssParameters;
+
+  fromSvgToCss(): void {
+    this.cssParameters = fromSvgToCss(this.width, this.height, this.svgParameters);
+  }
 }

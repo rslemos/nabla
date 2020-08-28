@@ -15,7 +15,7 @@
 
     <app-tool-window title="SVG &lt;linearGradient/&gt; parameters" muuriGridItem>
       <app-svg-linear-gradient-parameters
-        [(parameters)]="svgParameters"
+        [(parameters)]="svgParameters" (parametersChange)="fromSvgToCss()"
       ></app-svg-linear-gradient-parameters>
     </app-tool-window>
 
