@@ -1,0 +1,6 @@
+<div class="content">
+  <details [open]="open" (toggle)="tileGrid.refresh()">
+    <summary>{{title}}</summary>
+    <ng-content></ng-content>
+  </details>
+</div>

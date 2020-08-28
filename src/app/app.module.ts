@@ -5,10 +5,12 @@ import { MuuriModule } from 'muuri-angular';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 import { AppComponent } from './app.component';
+import { ToolWindowComponent } from './tool-window.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ToolWindowComponent,
   ],
   imports: [
     BrowserModule,
