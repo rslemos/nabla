@@ -37,4 +37,7 @@ export class AppComponent {
   fromSvgToCss(): void {
     this.cssParameters = fromSvgToCss(this.width, this.height, this.svgParameters);
   }
+
+  private fromCssToSvg(): void {
+  }
 }
