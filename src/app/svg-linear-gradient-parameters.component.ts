@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { Input } from '@angular/core';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { HostListener } from '@angular/core';
 
 import { Color } from './color.function';
+
+import { toSvgParameters } from './svg-to-parameters.function';
 
 @Component({
   selector: 'app-svg-linear-gradient-parameters',
@@ -28,6 +31,24 @@ export class SvgLinearGradientParametersComponent {
   @Output() parametersChange = new EventEmitter<SvgParameters>();
 
   error = '';
+
+  @HostListener('change')
+  onChange(event: Event): void {
+    try {
+      this.parameters = toSvgParameters([
+        this._x1,
+        this._y1,
+        this._x2,
+        this._y2,
+        this._gradientUnits,
+        this._stops,
+      ]);
+      this.error = '';
+      this.parametersChange.emit(this.parameters);
+    } catch (error) {
+      this.error = (error as Error).message;
+    }
+  }
 
 }
 
