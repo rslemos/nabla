@@ -138,9 +138,9 @@ export function formatAlphaColor(_color: Color): string | ColorError {
   const red = coerceNumberProperty(_red, 'invalid red');
   const green = coerceNumberProperty(_green, 'invalid green');
   const blue = coerceNumberProperty(_blue, 'invalid blue');
-  const alpha = (_alpha && _alpha !== '%')
+  const alpha = (_alpha !== undefined && _alpha !== '%')
     ? coerceNumberProperty(_alpha, 'invalid alpha')
-    : null;
+    : undefined;
 
   if (red === 'invalid red') {
     return red;
@@ -160,7 +160,7 @@ export function formatAlphaColor(_color: Color): string | ColorError {
 
   const components = [
     ...[red, green, blue].map(coordinate => `${coordinate}${perc}`),
-    ...[alpha].filter(a => !!a).map(a => `${a}`),
+    ...[alpha].filter(a => a !== undefined).map(a => `${a}`),
   ].join(', ');
 
   return alpha

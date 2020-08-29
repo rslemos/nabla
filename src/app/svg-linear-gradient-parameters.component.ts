@@ -3,17 +3,20 @@ import { Input } from '@angular/core';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { OnChanges } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
 
 import { Color } from './color.function';
 
 import { toSvgParameters } from './svg-to-parameters.function';
+import { toSvgFormFields } from './svg-to-form-fields.function';
 
 @Component({
   selector: 'app-svg-linear-gradient-parameters',
   templateUrl: './svg-linear-gradient-parameters.component.html',
   styleUrls: ['./svg-linear-gradient-parameters.component.scss'],
 })
-export class SvgLinearGradientParametersComponent {
+export class SvgLinearGradientParametersComponent implements OnChanges {
   // tslint:disable-next-line: variable-name
   _x1 = '';
   // tslint:disable-next-line: variable-name
@@ -31,6 +34,22 @@ export class SvgLinearGradientParametersComponent {
   @Output() parametersChange = new EventEmitter<SvgParameters>();
 
   error = '';
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.parameters) {
+      try {
+        [
+          this._x1,
+          this._y1,
+          this._x2,
+          this._y2,
+          this._gradientUnits,
+          this._stops,
+        ] = toSvgFormFields(this.parameters, [ '', '', '', '', 'objectBoundingBox', '' ]);
+      } catch (error) {
+      }
+    }
+  }
 
   @HostListener('change')
   onChange(event: Event): void {
