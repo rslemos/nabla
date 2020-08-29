@@ -1,3 +1,22 @@
 .grid {
   position: relative;
 }
+
+.debug {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-x: scroll;
+
+  & > div {
+    border: 1px dotted black;
+    margin: 4px;
+    padding: 4px;
+
+    pre {
+      background: lightblue;
+      padding: 4px;
+      margin: 0;
+    }
+  }
+}
