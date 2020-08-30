@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { Input } from '@angular/core';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { HostListener } from '@angular/core';
 
 import { Color } from './color.function';
+
+import { toCssParameters } from './css-to-parameters.function';
 
 @Component({
   selector: 'app-css-linear-gradient-parameters',
@@ -21,6 +24,19 @@ export class CssLinearGradientParametersComponent {
 
   error = '';
 
+  @HostListener('change')
+  onChange(event: Event): void {
+    try {
+      this.parameters = toCssParameters([
+        this._angle,
+        this._stops,
+      ]);
+      this.error = '';
+      this.parametersChange.emit(this.parameters);
+    } catch (error) {
+      this.error = (error as Error).message;
+    }
+  }
 }
 
 export interface CssParameters {
