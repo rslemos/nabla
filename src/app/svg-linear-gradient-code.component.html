@@ -3,6 +3,7 @@
 <div class="codemirror">
   <ngx-codemirror
     [(ngModel)]="_code"
+    (ngModelChange)="onCodeChange($event)"
 
     [options]="{
       lineNumbers: true,
