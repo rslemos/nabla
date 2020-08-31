@@ -1,6 +1,7 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 import { isColorError } from './color.function';
+import { formatAlphaColor } from './color.function';
 import { parseAlphaColor } from './color.function';
 import { parsePlainColor } from './color.function';
 import { regExp } from './color.function';
@@ -14,8 +15,10 @@ const serializer = new XMLSerializer();
 export class SvgModel {
   private readonly doc: XMLDocument;
 
-  constructor(code: string) {
-    this.doc = parser.parseFromString(code, 'image/svg+xml');
+  constructor(code?: string) {
+    this.doc = code?.trim()
+      ? parser.parseFromString(code, 'image/svg+xml')
+      : document.implementation.createDocument('http://www.w3.org/2000/svg', 'linearGradient', null);
   }
 
   get linearGradient(): Element {
@@ -138,6 +141,35 @@ export class SvgModel {
     return { x1, y1, x2, y2, gradientUnits, stops } as SvgParameters;
   }
   // tslint:enable: variable-name
+
+  set parameters(parameters: SvgParameters) {
+    if (parameters) {
+      const linearGradient = this.linearGradient;
+
+      const x1 = parameters.x1 !== null ? parameters.x1.toString() : '';
+      const y1 = parameters.y1 !== null ? parameters.y1.toString() : '';
+      const x2 = parameters.x2 !== null ? parameters.x2.toString() : '';
+      const y2 = parameters.y2 !== null ? parameters.y2.toString() : '';
+
+      const stops = parameters.stops
+        .map(stop => {
+          const offset = stop.offset !== undefined ? ` offset="${stop.offset.toString()}"` : '';
+          const color = stop.color !== undefined ? ` stop-color="${formatAlphaColor(stop.color)}"` : '';
+          const opacity = stop.opacity !== undefined ? ` stop-opacity="${stop.opacity.toString()}"` : '';
+
+          return `<stop ${offset} ${color} ${opacity}/>`;
+        })
+        .join('\n');
+
+      linearGradient.setAttribute('x1', x1);
+      linearGradient.setAttribute('y1', y1);
+      linearGradient.setAttribute('x2', x2);
+      linearGradient.setAttribute('y2', y2);
+      linearGradient.setAttribute('gradientUnits', parameters.gradientUnits);
+
+      linearGradient.innerHTML = stops;
+    }
+  }
 
   public toString(): string {
     return serializer.serializeToString(this.doc).replace(/></g, '>\n<');
