@@ -13,6 +13,7 @@ import { SvgLinearGradientCodeComponent } from './svg-linear-gradient-code.compo
 import { SvgLinearGradientOutputComponent } from './svg-linear-gradient-output.component';
 import { SvgLinearGradientOutputManyComponent } from './svg-linear-gradient-output-many.component';
 import { CssLinearGradientParametersComponent } from './css-linear-gradient-parameters.component';
+import { CssLinearGradientCodeComponent } from './css-linear-gradient-code.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CssLinearGradientParametersComponent } from './css-linear-gradient-para
     SvgLinearGradientOutputComponent,
     SvgLinearGradientOutputManyComponent,
     CssLinearGradientParametersComponent,
+    CssLinearGradientCodeComponent,
   ],
   imports: [
     BrowserModule,

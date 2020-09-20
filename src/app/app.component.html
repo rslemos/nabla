@@ -7,6 +7,12 @@
       ></app-svg-linear-gradient-code>
     </app-tool-window>
 
+    <app-tool-window title="CSS linear-gradient() code" muuriGridItem>
+      <app-css-linear-gradient-code
+        [(linearGradient)]="css" [(parameters)]="cssParameters"
+      ></app-css-linear-gradient-code>
+    </app-tool-window>
+
     <app-tool-window title="SVG &lt;linearGradient/&gt; parameters" muuriGridItem>
       <app-svg-linear-gradient-parameters
         [(parameters)]="svgParameters"
@@ -48,6 +54,10 @@
         <div>
           <h6>cssParameters</h6>
           <pre>{{cssParameters | json}}</pre>
+        </div>
+        <div>
+          <h6>css</h6>
+          <pre>{{css}}</pre>
         </div>
       </div>
     </app-tool-window>

@@ -1,0 +1,15 @@
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient">linear-gradient()</a>
+
+<div class="codemirror">
+  <ngx-codemirror
+    [(ngModel)]="_code"
+
+    [options]="{
+      lineNumbers: true,
+      theme: 'material',
+      mode: 'css'
+    }"
+  ></ngx-codemirror>
+</div>
+
+<div class="error {{error.class}}">&nbsp;{{error.message}}</div>

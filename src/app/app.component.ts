@@ -27,6 +27,7 @@ export class AppComponent {
   height = 300;
 
   linearGradient = undefined as Element;
+  css = '';
 
   svgParameters: SvgParameters;
   cssParameters: CssParameters;
