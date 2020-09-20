@@ -168,7 +168,7 @@ export function formatAlphaColor(_color: Color): string | ColorError {
     : `rgb(${components})`;
 }
 
-function buildRegExp(): [string, string] {
+function buildRegExp(): [string, string, RegExp] {
   // non-capturing fragments
   const ws = '\\s*';
   const lparen = `${ws}\\(${ws}`;
@@ -198,10 +198,12 @@ function buildRegExp(): [string, string] {
   return [
     color,
     coloralpha,
+    new RegExp(`^(?:${coloralpha}|${color})$`, 'i'),
   ];
 }
 
 export const [
   colorRegExpPattern,
   colorAlphaRegExpPattern,
+  regExp,
 ] = buildRegExp();

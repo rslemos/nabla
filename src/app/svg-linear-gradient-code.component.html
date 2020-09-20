@@ -1,0 +1,16 @@
+<a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient" target="_blank">&lt;linearGradient/&gt;</a>
+
+<div class="codemirror">
+  <ngx-codemirror
+    [(ngModel)]="_code"
+    (ngModelChange)="onCodeChange($event)"
+
+    [options]="{
+      lineNumbers: true,
+      theme: 'material',
+      mode: 'xml'
+    }"
+  ></ngx-codemirror>
+</div>
+
+<div class="error {{error.class}}">&nbsp;{{error.message}}</div>
