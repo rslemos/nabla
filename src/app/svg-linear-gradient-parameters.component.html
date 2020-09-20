@@ -1,0 +1,17 @@
+<label>x1</label><input type="text" [(ngModel)]="_x1" name="x1">
+<label>y1</label><input type="text" [(ngModel)]="_y1" name="y1">
+<label>x2</label><input type="text" [(ngModel)]="_x2" name="x2">
+<label>y2</label><input type="text" [(ngModel)]="_y2" name="y1">
+
+<label>gradientUnits</label>
+<select [(ngModel)]="_gradientUnits">
+  <option value="objectBoundingBox">objectBoundingBox</option>
+  <option value="userSpaceOnUse">userSpaceOnUse</option>
+</select>
+
+<label style="grid-column: 3; grid-row: 1; place-self: center;">stops <span>(offset: color, opacity)</span></label>
+<textarea style="grid-column: 3; grid-row: 2 / -2; place-self: center;"
+  [(ngModel)]="_stops"
+></textarea>
+
+<div class="error">&nbsp;{{error}}</div>
