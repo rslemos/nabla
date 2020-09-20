@@ -2,6 +2,7 @@ import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 import { isColorError } from './color.function';
 import { ColorError } from './color.function';
+import { formatAlphaColor } from './color.function';
 import { parseAlphaColor } from './color.function';
 import { parsePlainColor } from './color.function';
 
@@ -111,6 +112,46 @@ export class CssModel {
     return { angle, stops } as CssParameters;
   }
   // tslint:enable: variable-name
+
+  set parameters(parameters: CssParameters) {
+    if (parameters) {
+      const keywords = [
+        [0 * Math.PI / 4, 'to top'],
+        [1 * Math.PI / 4, 'to top right'],
+        [2 * Math.PI / 4, 'to right'],
+        [3 * Math.PI / 4, 'to bottom right'],
+        [4 * Math.PI / 4, 'to bottom'],
+        [5 * Math.PI / 4, 'to bottom left'],
+        [6 * Math.PI / 4, 'to left'],
+        [7 * Math.PI / 4, 'to top left'],
+      ] as [number, string][];
+      const e = 1e-5;
+
+      const angle = keywords
+        .filter(([target]) => parameters.angle > target - e && parameters.angle < target + e)
+        .map(([, keyword]) => keyword)[0]
+        || `${formatNumber(parameters.angle * 180 / Math.PI)}deg`;
+
+      const stops = parameters.stops
+        .map(stop => {
+          const color = stop.color !== undefined ? formatAlphaColor(stop.color) : '';
+          const midpoint = stop.midpoint !== undefined ? `, ${formatCoordinate(stop.midpoint)}` : '';
+
+          if (stop.offset.length === 0) {
+            return `${color}${midpoint}`;
+          }
+          if (stop.offset.length === 1) {
+            return `${color} ${formatCoordinate(stop.offset[0])}${midpoint}`;
+          }
+          if (stop.offset.length === 2) {
+            return `${color} ${formatCoordinate(stop.offset[0])} ${formatCoordinate(stop.offset[1])}${midpoint}`;
+          }
+        })
+        .join(', ');
+
+      this._linearGradient = `linear-gradient(${angle}, ${stops})`;
+    }
+  }
 
   public toString(): string {
     return [this.header, this._linearGradient, this.trailer].join('');
@@ -304,6 +345,16 @@ function parseOffsetAndMidpoint([
   }
 
   return [offset];
+}
+
+function formatNumber(n: number): string {
+  return n.toFixed(14).replace(/\.?0+$/, '');
+}
+
+function formatCoordinate([n, perc]: [number, '%'?]): string {
+  return perc
+    ? `${formatNumber(n)}${perc}`
+    : formatNumber(n);
 }
 
 function buildRegExp(): [RegExp, RegExp, RegExp] {

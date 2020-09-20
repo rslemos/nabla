@@ -3,6 +3,8 @@ import { Input } from '@angular/core';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { OnChanges } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
 
 import { Subject } from 'rxjs';
 import { of } from 'rxjs';
@@ -22,7 +24,7 @@ import { CssModel } from './css-model.class';
   templateUrl: './css-linear-gradient-code.component.html',
   styleUrls: ['./css-linear-gradient-code.component.scss'],
 })
-export class CssLinearGradientCodeComponent implements OnInit {
+export class CssLinearGradientCodeComponent implements OnInit, OnChanges {
   // tslint:disable-next-line: variable-name
   _code = '';
   // tslint:disable-next-line: variable-name
@@ -58,6 +60,18 @@ export class CssLinearGradientCodeComponent implements OnInit {
       this.linearGradientChange.emit(this._model.linearGradient);
       this.parametersChange.emit(parameters);
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.parameters) {
+      if (!this._model?.linearGradient) {
+        this._model = new CssModel();
+      }
+
+      this._model.parameters = this.parameters;
+      this._code = this._model.toString();
+      this.linearGradientChange.emit(this._model.linearGradient);
+    }
   }
 
   onCodeChange(code: string): void {
